@@ -1,3 +1,7 @@
+#include <sstream>
+#include <thread>
+#include <chrono>
+
 #include "rxcpp/rx.hpp"
 
 namespace rx
@@ -7,6 +11,8 @@ namespace rx
     using namespace rxcpp::operators;
     using namespace rxcpp::util;
 }
+
+using namespace std::chrono_literals;
 
 namespace sources
 {
@@ -41,17 +47,29 @@ namespace sources
     void test_combine_latest()
     {
         printf("//! [combine_latest sample]\n");
-        auto o1 = rxcpp::observable<>::interval(std::chrono::milliseconds(2));
-        auto o2 = rxcpp::observable<>::interval(std::chrono::milliseconds(3));
-        auto o3 = rxcpp::observable<>::interval(std::chrono::milliseconds(5));
+        auto o1 = rxcpp::observable<>::interval(std::chrono::milliseconds(2), rxcpp::observe_on_new_thread());
+        auto o2 = rxcpp::observable<>::interval(std::chrono::milliseconds(3), rxcpp::observe_on_new_thread());
+        auto o3 = rxcpp::observable<>::interval(std::chrono::milliseconds(5), rxcpp::observe_on_new_thread());
         auto values = o1.combine_latest(o2, o3);
-        values.take(50)
-            .as_blocking()
+        auto subscription = values
+            //.take(500)
             .subscribe(
             [](std::tuple<int, int, int> v)
-            { printf("OnNext: %d, %d, %d\n", std::get<0>(v), std::get<1>(v), std::get<2>(v)); },
+            { 
+                auto id = std::this_thread::get_id();
+
+                std::stringstream ss;
+                ss << "[" << id << "] OnNext: " << std::get<0>(v) << ", " << std::get<1>(v) << ", " << std::get<2>(v) << std::endl;
+                printf("%s", ss.str().c_str());
+
+                },
             []()
             { printf("OnCompleted\n"); });
+
         printf("//! [combine_latest sample]\n");
+
+        std::this_thread::sleep_for(2000ms);
+
+        subscription.clear();
     }
 }
