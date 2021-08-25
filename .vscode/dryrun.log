@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/kinwong/dev/github/rxcpp-examples'
+clang++ -Wall -Wextra -std=c++17 -g -Iinclude -cxx-isystem/Users/kinwong/dev/tools/vcpkg/installed/arm64-osx/include -Llib src/main.cpp -o bin/main 
+make: Leaving directory `/Users/kinwong/dev/github/rxcpp-examples'
+ 

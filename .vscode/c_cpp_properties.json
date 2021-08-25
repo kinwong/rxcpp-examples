@@ -1,27 +1,21 @@
 {
-  "env": {
-    "myDefaultIncludePath": [
-      "${workspaceFolder}/src/**",
-      "${workspaceFolder}/include/**"
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/src/**",
+                "${workspaceFolder}/include/**",
+                "/Users/kinwong/dev/tools/vcpkg/installed/arm64-osx/include/**"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "macos-clang-arm64"
+        }
     ],
-    "myCompilerPath": "/usr/local/bin/gcc-7"
-  },
-  "configurations": [
-    {
-      "name": "Mac",
-      "includePath": [
-        "${myDefaultIncludePath}",
-        "/Users/kinwong/dev/tools/vcpkg/installed/arm64-osx/include"
-      ],
-      "defines": [],
-      "macFrameworkPath": [
-        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks"
-      ],
-      "compilerPath": "/usr/bin/clang++",
-      "cStandard": "c17",
-      "cppStandard": "c++17",
-      "intelliSenseMode": "${default}"
-    }
-  ],
-  "version": 4
+    "version": 4
 }
