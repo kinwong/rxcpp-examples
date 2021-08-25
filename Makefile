@@ -5,6 +5,7 @@ BIN		:= bin
 SRC		:= src
 INCLUDE	:= include
 LIB		:= lib
+VCPKG := /Users/kinwong/dev/tools/vcpkg/installed/arm64-osx/include
 
 LIBRARIES	:=
 EXECUTABLE	:= main
@@ -16,7 +17,7 @@ run: clean all
 	./$(BIN)/$(EXECUTABLE)
 
 $(BIN)/$(EXECUTABLE): $(SRC)/*.cpp
-	$(CXX) $(CXX_FLAGS) -I$(INCLUDE) -L$(LIB) $^ -o $@ $(LIBRARIES)
+	$(CXX) $(CXX_FLAGS) -I$(INCLUDE) -cxx-isystem$(VCPKG) -L$(LIB) $^ -o $@ $(LIBRARIES)
 
 clean:
 	-rm $(BIN)/*

@@ -3,7 +3,7 @@
     "configurations": [
         {
             "name": "C++ Debug (lldb)",
-            "type": "cppdbg",
+            "type": "lldb",
             "request": "launch",
             "program": "${workspaceFolder}/bin/main",
             "preLaunchTask": "Build C++ project",
