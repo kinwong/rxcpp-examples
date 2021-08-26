@@ -1,10 +1,12 @@
 #include <iostream>
 #include <algorithm>
 #include "sources.hpp"
+#include "examples.hpp"
 
 int main() {
-    //std::cout << "Hello Easy C++ project!" << std::endl;
-    //sources::create_timer();
-    sources::test_combine_latest();
+    examples::test_combine_latest();
+    examples::test_zip_vector();
+    examples::test_interval();
+    examples::test_timer();
 }
 
