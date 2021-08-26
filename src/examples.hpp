@@ -1,9 +1,12 @@
 #include <iostream>
+#include <sstream>
 #include <vector>
 #include <chrono>
 
 #include "rxcpp/rx.hpp"
 #include "zip_vector.hpp"
+
+using namespace std::literals::chrono_literals;
 
 namespace examples
 {

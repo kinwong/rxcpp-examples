@@ -1,6 +1,5 @@
 #include "rxcpp/rx.hpp"
 
-
 namespace operators
 {
     template <typename T>

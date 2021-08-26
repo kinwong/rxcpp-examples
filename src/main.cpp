@@ -1,6 +1,5 @@
 #include <iostream>
 #include <algorithm>
-#include "sources.hpp"
 #include "examples.hpp"
 
 int main() {
